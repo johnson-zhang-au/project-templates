@@ -16,7 +16,7 @@ def list_available_connections() -> Dict[str, List[Dict[str, str]]]:
         connection_settings = client.get_connection(conn).get_settings()
         connection_type = connection_settings.type  # Get connection type
         allow_write = connection_settings.allow_write
-        allow_managed_folders = connection_settings.allowManagedFolders
+        allow_managed_folders = connection_settings.allow_managed_folders
         
         if connection_type in allowed_types and allow_write and allow_managed_folders:
             connection_choices.append({
