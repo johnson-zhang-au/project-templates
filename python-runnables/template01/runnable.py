@@ -143,8 +143,10 @@ class MyRunnable(Runnable):
         
         # Create a managed folder in the project
         folder_name = self.config.get("managedFolderName", "Policies")
-        logger.info(f"Creating managed folder: {folder_name}")
-        managed_folder = project.create_managed_folder(folder_name)
+        connection_name = self.config.get("connection", "dataiku-managed-storage")
+        logger.info(f"Creating managed folder: {folder_name} with connection {connection_name}")
+        
+        managed_folder = project.create_managed_folder(folder_name, connection_name)
         
         progress_callback(3)
         
