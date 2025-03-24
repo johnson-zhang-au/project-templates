@@ -1,0 +1,22 @@
+{
+    "meta": {
+        "label": "New project with policy documents",
+        "description": "This project template includes the policy documents to allow you getting started quickly",
+        "icon": "icon-puzzle-piece"
+    },
+    "impersonate": false,
+    "params": [
+        {
+            "name": "projectName",
+            "label": "Project name",
+            "type": "STRING",
+            "mandatory": true
+        }
+    ],
+    "resultType": "JSON_OBJECT",
+    "macroRoles": [
+        {
+            "type": "PROJECT_CREATOR"
+        }
+    ]
+}
