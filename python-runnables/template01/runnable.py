@@ -144,9 +144,24 @@ class MyRunnable(Runnable):
         # Create a managed folder in the project
         folder_name = self.config.get("managedFolderName", "Policies")
         connection_name = self.config.get("connection", "dataiku-managed-storage")
-        logger.info(f"Creating managed folder: {folder_name} with connection {connection_name}")
+        # Map connection types to managed folder types
+        connection_type_mapping = {
+            "EC2": "S3",
+            "Azure": "Azure",
+            "GCS": "GCS",
+            "Filesystem": "Filesystem"
+        }
+
+        # Get the actual connection type
+        connection_type = admin_client.get_connection(connection_name).get_settings().type
+
+        # Determine the managed folder type based on the connection type
+        managed_folder_type = connection_type_mapping.get(connection_type, "S3")
+
+        logger.info(f"Creating managed folder: {folder_name} with connection {connection_name}, folder type: {managed_folder_type}")
+
         
-        managed_folder = project.create_managed_folder(folder_name, connection_name)
+        managed_folder = project.create_managed_folder(folder_name, managed_folder_type, connection_name)
         
         progress_callback(3)
         
