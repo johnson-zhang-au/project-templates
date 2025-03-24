@@ -2,7 +2,7 @@
     "meta": {
         "label": "New project with policy documents",
         "description": "This project template includes the policy documents to allow you getting started quickly",
-        "icon": "icon-puzzle-piece"
+        "icon": "fas fa-copy"
     },
     "impersonate": false,
     "params": [
