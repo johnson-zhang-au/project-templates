@@ -15,8 +15,9 @@ def list_available_connections() -> Dict[str, List[Dict[str, str]]]:
     for conn in connections:
         connection_settings = client.get_connection(conn).get_settings()
         connection_type = connection_settings.type  # Get connection type
+        allow_write = connection_settings.allow_write
         
-        if connection_type in allowed_types:
+        if connection_type in allowed_types and allow_write:
             connection_choices.append({
                 "value": conn,
                 "label": f"{conn} ({connection_type})"
