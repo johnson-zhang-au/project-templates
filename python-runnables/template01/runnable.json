@@ -5,12 +5,21 @@
         "icon": "fas fa-copy"
     },
     "impersonate": false,
+    "paramsPythonSetup": "params_helper.py",
     "params": [
         {
             "name": "projectName",
             "label": "Project name",
             "type": "STRING",
             "mandatory": true
+        },
+        {
+            "name": "connection",
+            "type": "SELECT",
+            "label": "Connection",
+            "description": "The connection to create the managed folder",
+            "mandatory": true,
+            "getChoicesFromPython": true
         }
     ],
     "resultType": "JSON_OBJECT",
